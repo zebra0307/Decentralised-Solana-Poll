@@ -4,6 +4,9 @@ Decentralized Solana Poll is a dApp that allows you to easily create and manage 
 
 ---
 
+# Architecture Visualisation
+http://googleusercontent.com/image_generation_content/0
+
 ## Getting Started
 
 To get started with Decentralized Solana Poll, you'll need to have **Node.js** or **Bun** installed.
