@@ -1,0 +1,383 @@
+{
+  "accounts": [
+    {
+      "discriminator": [
+        110,
+        234,
+        167,
+        188,
+        231,
+        136,
+        153,
+        111
+      ],
+      "name": "Poll"
+    },
+    {
+      "discriminator": [
+        178,
+        96,
+        138,
+        116,
+        143,
+        202,
+        115,
+        33
+      ],
+      "name": "VoterRecord"
+    }
+  ],
+  "address": "F3cGjvGtWfEFGsRTDwmTvD8LAiJ8h8MyXBxhDQc1hyEs",
+  "errors": [
+    {
+      "code": 6000,
+      "msg": "Poll is already closed.",
+      "name": "PollClosed"
+    },
+    {
+      "code": 6001,
+      "msg": "Voting has not started yet.",
+      "name": "PollNotStarted"
+    },
+    {
+      "code": 6002,
+      "msg": "Voting has already ended.",
+      "name": "PollEnded"
+    },
+    {
+      "code": 6003,
+      "msg": "This voter has already cast a vote.",
+      "name": "AlreadyVoted"
+    },
+    {
+      "code": 6004,
+      "msg": "Provided option index is invalid.",
+      "name": "InvalidOption"
+    },
+    {
+      "code": 6005,
+      "msg": "Too many options supplied.",
+      "name": "TooManyOptions"
+    },
+    {
+      "code": 6006,
+      "msg": "At least two options are required.",
+      "name": "NotEnoughOptions"
+    },
+    {
+      "code": 6007,
+      "msg": "The poll title exceeds the allowed length.",
+      "name": "TitleTooLong"
+    },
+    {
+      "code": 6008,
+      "msg": "The poll description exceeds the allowed length.",
+      "name": "DescriptionTooLong"
+    },
+    {
+      "code": 6009,
+      "msg": "One of the option labels exceeds the allowed length.",
+      "name": "OptionLabelTooLong"
+    },
+    {
+      "code": 6010,
+      "msg": "The poll schedule is invalid.",
+      "name": "InvalidSchedule"
+    },
+    {
+      "code": 6011,
+      "msg": "The poll is still active.",
+      "name": "PollStillActive"
+    },
+    {
+      "code": 6012,
+      "msg": "Vote counter overflow.",
+      "name": "VoteOverflow"
+    }
+  ],
+  "instructions": [
+    {
+      "accounts": [
+        {
+          "name": "poll",
+          "writable": true
+        },
+        {
+          "name": "voter",
+          "signer": true,
+          "writable": true
+        },
+        {
+          "name": "voter_record",
+          "pda": {
+            "seeds": [
+              {
+                "kind": "const",
+                "value": [
+                  118,
+                  111,
+                  116,
+                  101,
+                  114
+                ]
+              },
+              {
+                "kind": "account",
+                "path": "poll"
+              },
+              {
+                "kind": "account",
+                "path": "voter"
+              }
+            ]
+          },
+          "writable": true
+        },
+        {
+          "address": "11111111111111111111111111111111",
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": {
+              "name": "CastVoteParams"
+            }
+          }
+        }
+      ],
+      "discriminator": [
+        20,
+        212,
+        15,
+        189,
+        69,
+        180,
+        69,
+        151
+      ],
+      "name": "cast_vote"
+    },
+    {
+      "accounts": [
+        {
+          "name": "poll",
+          "writable": true
+        },
+        {
+          "name": "creator",
+          "relations": [
+            "poll"
+          ],
+          "signer": true
+        }
+      ],
+      "args": [],
+      "discriminator": [
+        139,
+        213,
+        162,
+        65,
+        172,
+        150,
+        123,
+        67
+      ],
+      "name": "close_poll"
+    },
+    {
+      "accounts": [
+        {
+          "name": "poll",
+          "writable": true
+        },
+        {
+          "name": "authority",
+          "signer": true,
+          "writable": true
+        },
+        {
+          "address": "11111111111111111111111111111111",
+          "name": "system_program"
+        }
+      ],
+      "args": [
+        {
+          "name": "params",
+          "type": {
+            "defined": {
+              "name": "CreatePollParams"
+            }
+          }
+        }
+      ],
+      "discriminator": [
+        182,
+        171,
+        112,
+        238,
+        6,
+        219,
+        14,
+        110
+      ],
+      "name": "create_poll"
+    }
+  ],
+  "metadata": {
+    "description": "Decentralized Solana Poll Program",
+    "name": "poll",
+    "spec": "0.1.0",
+    "version": "0.1.0"
+  },
+  "types": [
+    {
+      "name": "CastVoteParams",
+      "type": {
+        "fields": [
+          {
+            "name": "option_index",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "CreatePollParams",
+      "type": {
+        "fields": [
+          {
+            "name": "seed",
+            "type": {
+              "array": [
+                "u8",
+                8
+              ]
+            }
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "options",
+            "type": {
+              "vec": "string"
+            }
+          },
+          {
+            "name": "start_ts",
+            "type": "i64"
+          },
+          {
+            "name": "end_ts",
+            "type": "i64"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "Poll",
+      "type": {
+        "fields": [
+          {
+            "name": "creator",
+            "type": "pubkey"
+          },
+          {
+            "name": "seed",
+            "type": {
+              "array": [
+                "u8",
+                8
+              ]
+            }
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "options",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "VoteOption"
+                }
+              }
+            }
+          },
+          {
+            "name": "start_ts",
+            "type": "i64"
+          },
+          {
+            "name": "end_ts",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          },
+          {
+            "name": "is_closed",
+            "type": "bool"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "VoteOption",
+      "type": {
+        "fields": [
+          {
+            "name": "label",
+            "type": "string"
+          },
+          {
+            "name": "votes",
+            "type": "u64"
+          }
+        ],
+        "kind": "struct"
+      }
+    },
+    {
+      "name": "VoterRecord",
+      "type": {
+        "fields": [
+          {
+            "name": "poll",
+            "type": "pubkey"
+          },
+          {
+            "name": "voter",
+            "type": "pubkey"
+          },
+          {
+            "name": "selected_option",
+            "type": "u8"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ],
+        "kind": "struct"
+      }
+    }
+  ]
+}
