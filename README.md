@@ -1,89 +1,108 @@
-# gill-next-tailwind-counter
+# Decentralized Solana Poll# Decentralized Solana Poll
 
-This is a Next.js app containing:
 
-- Tailwind and Shadcn UI for styling
-- [Gill](https://gill.site/) Solana SDK
-- Shadcn [Wallet UI](https://registry.wallet-ui.dev) components
-- A basic Counter Solana program written in Anchor
-- [codama](https://github.com/codama-idl/codama) to generate a JS sdk for the program
-- UI components for interacting with the program
 
-## Getting Started
+Decentralized Solana Poll is a dApp that allows you to easily create and manage polls on the Solana blockchain.Decentralized Solana Poll is a dApp that allows you to easily create and manage polls on the Solana blockchain.
 
-### Installation
 
-#### Download the template
 
-```shell
-npx create-solana-dapp@latest -t gh:solana-foundation/templates/gill/gill-next-tailwind-counter
-```
+## Getting Started## Getting Started
 
-#### Install Dependencies
 
-```shell
-npm install
-```
 
-## Apps
+To get started with Decentralized Solana Poll, you'll need to have Node.js or Bun installed.To get started with Decentralized Solana Poll, you'll need to have Node.js or Bun installed.
 
-### anchor
 
-This is a Solana program written in Rust using the Anchor framework.
 
-#### Commands
+**Clone the repository:****Clone the repository:**
 
-You can use any normal anchor commands. Either move to the `anchor` directory and run the `anchor` command or prefix the
-command with `npm`, eg: `npm run anchor`.
 
-#### Sync the program id:
 
-Running this command will create a new keypair in the `anchor/target/deploy` directory and save the address to the
-Anchor config file and update the `declare_id!` macro in the `./src/lib.rs` file of the program. This will also update
-the constant in the `anchor/src/counter-exports.ts` file.
+```bash```bash
 
-```shell
-npm run setup
-```
+git clone https://github.com/zebra0307/Decentralised-Solana-Poll.gitgit clone https://github.com/zebra0307/Decentralised-Solana-Poll.git
 
-#### Build the program:
+``````
 
-```shell
-npm run anchor-build
-```
 
-#### Start the test validator with the program deployed:
 
-```shell
-npm run anchor-localnet
-```
+**Install the dependencies:****Install the dependencies:**
 
-#### Run the tests
 
-```shell
-npm run anchor-test
-```
 
-#### Deploy to Devnet
+```bash```bash
 
-```shell
-npm run anchor deploy --provider.cluster devnet
-```
+npm installnpm install
 
-### web
+``````
 
-This is a React app that uses the Anchor generated client to interact with the Solana program.
 
-#### Commands
 
-Start the app
+**Run the development server:****Run the development server:**
 
-```shell
-npm run dev
-```
 
-Build the app
 
-```shell
-npm run build
-```
+```bash```bash
+
+npm run devnpm run dev
+
+``````
+
+
+
+Open http://localhost:3000 with your browser to see the result.Open http://localhost:3000 with your browser to see the result.
+
+
+
+## Tech Stack## Tech Stack
+
+
+
+Decentralized Solana Poll is built with the following technologies:Decentralized Solana Poll is built with the following technologies:
+
+
+
+- **Next.js** - A React framework for building server-side rendered and static web applications.- **Next.js** - A React framework for building server-side rendered and static web applications.
+
+- **TypeScript** - A typed superset of JavaScript that compiles to plain JavaScript.- **TypeScript** - A typed superset of JavaScript that compiles to plain JavaScript.
+
+- **Solana Web3.js** - A library for interacting with the Solana blockchain.- **Solana Web3.js** - A library for interacting with the Solana blockchain.
+
+- **Tailwind CSS** - A utility-first CSS framework for rapidly building custom user interfaces.- **Tailwind CSS** - A utility-first CSS framework for rapidly building custom user interfaces.
+
+- **Shadcn UI** - A collection of high-quality, pre-built components that can be used to build your own design system.- **Shadcn UI** - A collection of high-quality, pre-built components that can be used to build your own design system.
+
+
+
+## Available Scripts## Available Scripts
+
+
+
+In the project directory, you can run:In the project directory, you can run:
+
+
+
+- `npm run dev`: Runs the app in the development mode.- `npm run dev`: Runs the app in the development mode.
+
+- `npm run build`: Builds the app for production to the .next folder.- `npm run build`: Builds the app for production to the .next folder.
+
+- `npm run start`: Starts the production server.- `npm run start`: Starts the production server.
+
+- `npm run lint`: Lints the code.- `npm run lint`: Lints the code.
+
+
+
+## Contributing## Contributing
+
+
+
+Contributions are welcome! Please open an issue or submit a pull request if you have any ideas or suggestions.Contributions are welcome! Please open an issue or submit a pull request if you have any ideas or suggestions.
+
+
+
+## License## License
+
+
+
+This project is licensed under the MIT License.This project is licensed under the MIT License.
+

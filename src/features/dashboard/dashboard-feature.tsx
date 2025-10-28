@@ -1,120 +1,104 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import {
-  ArrowRight,
-  BookOpen,
-  CookingPot,
-  Droplets,
-  LucideAnchor,
-  LucideCode,
-  LucideWallet,
-  MessageCircleQuestion,
-} from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { ArrowRight, Vote, BarChart3, Users, Shield } from 'lucide-react'
 import React from 'react'
-import { AppHero } from '@/components/app-hero'
+import Link from 'next/link'
 
-const primary: {
-  label: string
-  href: string
-  description: string
-  icon: React.ReactNode
-}[] = [
+const features = [
   {
-    label: 'Solana Docs',
-    href: 'https://solana.com/docs',
-    description: 'The official documentation. Your first stop for understanding the Solana ecosystem.',
-    icon: <BookOpen className="w-8 h-8 text-purple-400" />,
+    title: 'Create Polls',
+    description: 'Launch custom polls with multiple options on the Solana blockchain',
+    icon: <Vote className="w-8 h-8 text-primary" />,
   },
   {
-    label: 'Solana Cookbook',
-    href: 'https://solana.com/developers/cookbook/',
-    description: 'Practical examples and code snippets for common tasks when building on Solana.',
-    icon: <CookingPot className="w-8 h-8 text-green-400" />,
-  },
-]
-
-const secondary: {
-  label: string
-  href: string
-  icon: React.ReactNode
-}[] = [
-  {
-    label: 'Solana Faucet',
-    href: 'https://faucet.solana.com/',
-    icon: <Droplets className="w-5 h-5 text-green-400" />,
+    title: 'Vote Securely',
+    description: 'Cast your vote using your Solana wallet with complete transparency',
+    icon: <Shield className="w-8 h-8 text-green-500" />,
   },
   {
-    label: 'Solana Stack Overflow',
-    href: 'https://solana.stackexchange.com/',
-    icon: <MessageCircleQuestion className="w-5 h-5 text-orange-400" />,
+    title: 'View Results',
+    description: 'See real-time poll results powered by blockchain technology',
+    icon: <BarChart3 className="w-8 h-8 text-blue-500" />,
   },
   {
-    label: 'Wallet UI Docs',
-    href: 'https://wallet-ui.dev',
-    icon: <LucideWallet className="w-5 h-5 text-blue-400" />,
-  },
-  {
-    label: 'Anchor Docs',
-    href: 'https://www.anchor-lang.com/docs',
-    icon: <LucideAnchor className="w-5 h-5 text-indigo-400" />,
-  },
-  {
-    label: 'Codama Repository',
-    href: 'https://github.com/codama-idl/codama',
-    icon: <LucideCode className="w-5 h-5 text-lime-400" />,
+    title: 'Community Driven',
+    description: 'Participate in decentralized decision-making with the community',
+    icon: <Users className="w-8 h-8 text-purple-500" />,
   },
 ]
 
 export default function DashboardFeature() {
   return (
-    <div>
-      <AppHero title="gm" subtitle="Say hi to your new Solana app." />
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {primary.map((link) => (
-            <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className="block group">
-              <Card className="h-full flex flex-col transition-all duration-200 ease-in-out group-hover:border-primary group-hover:shadow-lg group-hover:-translate-y-1">
-                <CardHeader className="flex-row items-center gap-4">
-                  {link.icon}
-                  <div>
-                    <CardTitle className="group-hover:text-primary transition-colors">{link.label}</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <p className="text-muted-foreground">{link.description}</p>
-                </CardContent>
-              </Card>
-            </a>
-          ))}
-        </div>
-        <div className="mt-8">
-          <Card>
-            <CardHeader>
-              <CardTitle>More Resources</CardTitle>
-              <CardDescription>Expand your knowledge with these community and support links.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-4">
-                {secondary.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="flex items-center gap-4 group rounded-md p-2 -m-2 hover:bg-muted transition-colors"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {link.icon}
-                      <span className="flex-grow text-muted-foreground group-hover:text-foreground transition-colors">
-                        {link.label}
-                      </span>
-                      <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        </div>
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Hero Section */}
+      <div className="text-center mb-12">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+          Decentralized Polling
+        </h1>
+        <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          Create and participate in transparent, tamper-proof polls powered by the Solana blockchain
+        </p>
+        <Link href="/poll">
+          <Button size="lg" className="gap-2">
+            Get Started
+            <ArrowRight className="w-4 h-4" />
+          </Button>
+        </Link>
       </div>
+
+      {/* Features Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+        {features.map((feature) => (
+          <Card key={feature.title} className="border-muted hover:border-primary/50 transition-colors">
+            <CardHeader>
+              <div className="flex items-center gap-3 mb-2">
+                {feature.icon}
+                <CardTitle className="text-xl">{feature.title}</CardTitle>
+              </div>
+              <CardDescription className="text-base">{feature.description}</CardDescription>
+            </CardHeader>
+          </Card>
+        ))}
+      </div>
+
+      {/* How It Works */}
+      <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-transparent">
+        <CardHeader>
+          <CardTitle className="text-2xl">How It Works</CardTitle>
+          <CardDescription>Three simple steps to create or participate in polls</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-3">
+                <span className="text-2xl font-bold text-primary">1</span>
+              </div>
+              <h3 className="font-semibold mb-2">Connect Wallet</h3>
+              <p className="text-sm text-muted-foreground">
+                Connect your Solana wallet to get started with creating or voting on polls
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-3">
+                <span className="text-2xl font-bold text-primary">2</span>
+              </div>
+              <h3 className="font-semibold mb-2">Create or Browse</h3>
+              <p className="text-sm text-muted-foreground">
+                Create a new poll with custom options or browse existing polls to participate
+              </p>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-3">
+                <span className="text-2xl font-bold text-primary">3</span>
+              </div>
+              <h3 className="font-semibold mb-2">Vote & View Results</h3>
+              <p className="text-sm text-muted-foreground">
+                Cast your vote and see real-time results stored immutably on the blockchain
+              </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }
