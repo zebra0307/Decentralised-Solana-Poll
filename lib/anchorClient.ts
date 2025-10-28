@@ -1,4 +1,4 @@
-import { AnchorProvider, Program, Idl } from "@coral-xyz/anchor";
+import { AnchorProvider, Program } from "@coral-xyz/anchor";
 import { Connection, PublicKey, Transaction, VersionedTransaction } from "@solana/web3.js";
 import { IDL, Poll } from "./idl/poll";
 
@@ -34,8 +34,10 @@ export const getProvider = (wallet: WalletAdapter, endpoint = DEFAULT_ENDPOINT) 
 		commitment: COMMITMENT,
 	});
 
-// @ts-ignore - IDL type compatibility issue with newer Anchor versions
+// IDL type compatibility with Anchor - uses explicit type casting for newer versions
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getProgram = (wallet: WalletAdapter, endpoint = DEFAULT_ENDPOINT): Program<Poll> =>
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	new Program(IDL as any, getProvider(wallet, endpoint)) as any;
 
 export const derivePollPda = (creator: PublicKey, seed: readonly number[] | Uint8Array) =>

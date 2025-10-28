@@ -1,1 +1,0 @@
-anchor_lang::context::Context<'_, '_, '_, '_, cast_vote::CastVote<'_>>

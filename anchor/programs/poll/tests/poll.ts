@@ -2,7 +2,7 @@ import * as anchor from "@coral-xyz/anchor";
 import { Program } from "@coral-xyz/anchor";
 import { Keypair, LAMPORTS_PER_SOL, PublicKey, SystemProgram } from "@solana/web3.js";
 import { expect } from "chai";
-import { Poll } from "../target/types/poll";
+import { Poll } from "../../../target/types/poll";
 
 describe("poll program", () => {
 	anchor.setProvider(anchor.AnchorProvider.env());
@@ -32,7 +32,6 @@ describe("poll program", () => {
 			.accounts({
 				poll: pollPda,
 				authority: creator.publicKey,
-				systemProgram: SystemProgram.programId,
 			})
 			.rpc();
 
@@ -55,7 +54,6 @@ describe("poll program", () => {
 				poll: pollPda,
 				voter: voter.publicKey,
 				voterRecord: voterRecordPda,
-				systemProgram: SystemProgram.programId,
 			})
 			.signers([voter])
 			.rpc();
@@ -68,7 +66,6 @@ describe("poll program", () => {
 			.closePoll()
 			.accounts({
 				poll: pollPda,
-				creator: creator.publicKey,
 			})
 			.rpc();
 
