@@ -5,7 +5,8 @@ Decentralized Solana Poll is a dApp that allows you to easily create and manage 
 ---
 
 # Architecture Visualisation
-http://googleusercontent.com/image_generation_content/0
+<img width="1160" height="1168" alt="image" src="https://github.com/user-attachments/assets/7989c615-e346-40cc-a93b-e9fbcb7f7ead" />
+
 
 ## Getting Started
 
